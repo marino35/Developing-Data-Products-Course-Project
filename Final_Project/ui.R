@@ -14,7 +14,7 @@ data <- read.csv("Customers.csv")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
         #data <- read.csv("Customers.csv"),
-        titlePanel("Spending Score by Profession and Age"),
+        titlePanel(HTML("<span style='color:red;font-weight:bold;'>Spending Score Prediction Based on Demographic Data </span>")),
         sidebarLayout(
                 sidebarPanel(
                         selectInput("gender", "Enter Gender", choices = sort(unique(data$Gender))),
@@ -27,7 +27,10 @@ ui <- fluidPage(
                         actionButton("score", "See the Score")
                 ),
                 mainPanel(
-                        h4("Spending Score:"),
+                        h3("Based on the selection a spending score will be predicted based on a model that is trained."),
+                        h3(HTML("Dataset used to train this model can be found <a href = 'https://www.kaggle.com/datasets/datascientistanna/customers-dataset'>here.</a>")),
+                        h3("Please wait around 5 seconds to see the spending score!"),
+                        h3(HTML("<span style='color:blue;'>Spending Score is: </span>")),
                         verbatimTextOutput("spending_score")
                 )
         )
