@@ -5,9 +5,9 @@ account: msoysal
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8711183
-bundleId: 7026221
+bundleId: 7036755
 url: https://msoysal.shinyapps.io/Final_Project/
-when: 1680141589.54075
-lastSyncTime: 1680141589.54077
+when: 1680371609.40879
+lastSyncTime: 1680371609.4088
 asMultiple: FALSE
 asStatic: FALSE

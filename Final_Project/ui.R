@@ -11,7 +11,7 @@ library(shiny)
 library(randomForest)
 library(plotly)
 
-data <- read.csv("Customers.csv") 
+cust_data <- read.csv("Customers.csv") 
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -19,13 +19,13 @@ ui <- fluidPage(
         titlePanel(HTML("<span style='color:red;font-weight:bold;'>Spending Score Prediction Based on Demographic Data </span>")),
         sidebarLayout(
                 sidebarPanel(
-                        selectInput("gender", "Enter Gender", choices = sort(unique(data$Gender))),
+                        selectInput("gender", "Enter Gender", choices = sort(unique(cust_data$Gender))),
                         #sliderInput("age", "Enter Age", value = 20, min = 20, max = 100),
                         numericInput("age", "Enter Age", value = NULL),
                         numericInput("income", "Enter Annual Income", value = NULL),
-                        selectInput("profession", "Enter Profession", choices = sort(unique(data$Profession))),
-                        selectInput("exp", "Enter Work Experience", choices = sort(unique(data$Family.Size))),
-                        selectInput("fsize", "Enter Family Size", choices = sort(unique(data$Family.Size))),
+                        selectInput("profession", "Enter Profession", choices = sort(unique(cust_data$Profession))),
+                        selectInput("exp", "Enter Work Experience", choices = sort(unique(cust_data$Family.Size))),
+                        selectInput("fsize", "Enter Family Size", choices = sort(unique(cust_data$Family.Size))),
                         actionButton("score", "See the Score")
                 ),
                 mainPanel(
