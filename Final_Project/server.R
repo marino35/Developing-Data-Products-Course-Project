@@ -10,7 +10,7 @@
 library(shiny)
 library(randomForest)
 library(dplyr)
-library(plotly)
+library(ggplot2)
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
@@ -43,8 +43,10 @@ server <- function(input, output) {
                 output$spending_score <- renderText({
                         predict_score(input1, input2, input3, input4, input5, input6)
                 })
-                output$myplot <- renderPlotly({
-                        plot_ly(data = cust_data, x = ~Age, y = ~Spending.Score..1.100., color = ~Gender)
+                output$myplot <- renderPlot({
+                        ggplot(cust_data, aes(x = Age, y = Spending.Score..1.100., color = Gender)) +
+                                geom_point() + ggtitle("Age and Spending Score Distribution by Gender")
+                        #plot(data = cust_data, x = cust_data$Age, y = cust_data$Spending.Score..1.100., colour = cust_data$Gender)
                 }) 
         })
         

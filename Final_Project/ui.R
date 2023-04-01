@@ -9,7 +9,7 @@
 
 library(shiny)
 library(randomForest)
-library(plotly)
+library(ggplot2)
 
 cust_data <- read.csv("Customers.csv") 
 
@@ -34,7 +34,7 @@ ui <- fluidPage(
                         h3("Please wait around 5 seconds to see the spending score!"),
                         h3(HTML("<span style='color:blue;'>Spending Score is: </span>")),
                         verbatimTextOutput("spending_score"),
-                        plotlyOutput("myplot")
+                        plotOutput("myplot")
                 )
         )
 )
