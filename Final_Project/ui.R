@@ -9,6 +9,8 @@
 
 library(shiny)
 library(randomForest)
+library(plotly)
+
 data <- read.csv("Customers.csv") 
 
 # Define UI for application that draws a histogram
@@ -31,7 +33,8 @@ ui <- fluidPage(
                         h3(HTML("Dataset used to train this model can be found <a href = 'https://www.kaggle.com/datasets/datascientistanna/customers-dataset'>here.</a>")),
                         h3("Please wait around 5 seconds to see the spending score!"),
                         h3(HTML("<span style='color:blue;'>Spending Score is: </span>")),
-                        verbatimTextOutput("spending_score")
+                        verbatimTextOutput("spending_score"),
+                        plotlyOutput("myplot")
                 )
         )
 )

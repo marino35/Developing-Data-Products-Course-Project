@@ -10,6 +10,7 @@
 library(shiny)
 library(randomForest)
 library(dplyr)
+library(plotly)
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
@@ -42,6 +43,10 @@ server <- function(input, output) {
                 output$spending_score <- renderText({
                         predict_score(input1, input2, input3, input4, input5, input6)
                 })
+                output$myplot <- renderPlotly({
+                        plot_ly(data = data, x = ~Age, y = ~Spending.Score..1.100., color = ~Gender)
+                }) 
         })
+        
 }
 
