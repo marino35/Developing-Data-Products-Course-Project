@@ -1,0 +1,57 @@
+---
+title: "Developing Data Products Course Project Presentation"
+author: "Metehan Soysal"
+date: "2023-04-01"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+```
+
+## Introduction
+
+- This presentation provides an overview for the Developing Data Products Course Project.
+
+- The web application can be found at the link here: [Project Website](https://msoysal.shinyapps.io/Final_Project/).
+
+- The source code for the project can be found here: [Source Code](https://github.com/marino35/Developing-Data-Products-Course-Project/tree/master)
+
+## Overview
+- This project is using the [Customers dataset](https://www.kaggle.com/datasets/datascientistanna/customers-dataset) from Kaggle to predict a Spending Score based on demographics data.
+
+- Application uses the dataset to train a model using RandomForest and predict a score based on user inputted values.
+
+- It also provides a plot that shows the relationship of Age vs. Spending Score by Gender once the user inputted values.
+
+## Customer Dataset
+- This data is a detailed analysis of a imaginative shop's ideal customers. 
+- It helps a business to better understand its customers. 
+- The owner of a shop gets information about Customers through membership cards.
+- Dataset consists of 2000 records and 8 columns
+```{r echo = FALSE, comment=""}
+cust_data <- read.csv("Customers.csv")
+#head(cust_data)
+str(cust_data)
+```
+
+## Prediction Model and the R Code
+- This application was built by using a shiny app with ui.R and server.R files. It is hosted in shinyapps.io website.
+
+- Prediction model is built by using RandomForest as seen below:
+
+```{r echo = TRUE, fontsize = 4}
+predict_score <- function(input1, input2, input3, input4, input5, input6) 
+                {
+                model <- randomForest(Spending.Score..1.100. ~ ., data = cust_data)
+                # Prepare input data for score
+                new_data <- data.frame(Gender = input1, Age = input2, 
+                        Annual.Income.... = input3, Profession = input4, 
+                        Work.Experience = input5, Family.Size = input6)
+                
+                # Make prediction and return result
+                prediction <- predict(model, new_data)
+                return(prediction)}
+```
+
